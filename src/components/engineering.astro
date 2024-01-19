@@ -1,0 +1,37 @@
+---
+import engHero from "@assets/eng-hero.png";
+import { Picture } from "astro:assets";
+
+// About us components
+---
+
+<div class="grid gap-4">
+  <h1
+    class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter text-black">
+    Free Engineering Training
+  </h1>
+
+  <div>
+    <Picture
+      src={engHero}
+      alt="engineering equipment"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 800px) 100vw, 620px"
+      loading="eager"
+      format="avif"
+    />
+  </div>
+
+  <p class="text-lg mt-4 text-black max-w-fit lg:text-xl">
+    In conjuction with reputable partners, Rucotech is organizing a one-week
+    free upskill training for Engineering graduates.
+  </p>
+  <div class="mt-2 flex flex-col gap-3">
+    <a
+      href="/trainings"
+      class="flex gap-1 max-w-fit items-center justify-start bg-white text-[#2947A9] font-bold"
+      rel="noopener">
+      Learn more
+    </a>
+  </div>
+</div>
