@@ -2,6 +2,7 @@
 type Feature = {
   title: string;
   desc: string;
+  list?: string[];
   img: ImageMetadata;
 };
 export interface Props {
@@ -29,7 +30,21 @@ const { features } = Astro.props;
         </div>
         <div>
           <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.desc}</p>
+          <p
+            class="mt-2 leading-relaxed"
+            class:list={[
+              item.list && "font-semibold",
+              item.list && "text-black",
+            ]}>
+            {item.desc}
+          </p>
+          {item.list && (
+            <ul class="list-disc pl-4">
+              {item.list.map((value) => (
+                <li>{value}</li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     ))

@@ -3,11 +3,15 @@ import Icon from "astro-icon";
 ---
 
 <footer
-  class="mt-20 grid items-start justify-start p-8 bg-[#2947A9] text-white">
-  <div class="grid gap-4 lg:flex">
+  class="mt-20 grid items-center justify-center justify-items-center p-8 bg-[#2947A9] text-white">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 w-full">
+    <p class="flex gap-2">
+      <Icon class="lg:h-8 h-6" name="mdi:location" />
+      1-2 Vio water close (yellow gate),off NPA by-pass NPA express warri
+    </p>
     <p class="flex gap-2">
       <Icon class="h-6" name="mdi:location" />
-      1-2 Vio water close (yellow gate),off NPA by-pass NPA express warri
+      RS7 Road 4, Lekki Gardens Phase 2, Lekki, Lagos
     </p>
     <p class="flex gap-2">
       <Icon class="h-6" name="mdi:phone" />
@@ -18,11 +22,11 @@ import Icon from "astro-icon";
       hello@ruco.tech
     </p>
   </div>
-  <div class="mt-20">
-    <p class="text-sm text-slate-500">
+  <div class="mt-20 lg:text-center w-full">
+    <p class="text-sm text-slate-400">
       Copyright © {new Date().getFullYear()} Rucotech. All rights reserved.
     </p>
-    <p class="text-xs text-slate-500 mt-1">
+    <p class="text-xs text-slate-400 mt-1">
       Made by <a
         href="https://afullsnack.dev"
         target="_blank"
