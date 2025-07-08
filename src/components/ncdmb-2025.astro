@@ -1,0 +1,125 @@
+---
+import pic1 from "@assets/ncdmb-1.jpg";
+import pic2 from "@assets/ncdmb-2.jpg";
+import pic3 from "@assets/ncdmb-3.jpg";
+import { Picture } from "astro:assets";
+---
+
+<div class="grid gap-4">
+  <h1 class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter text-black">
+    NCDMB 2025 Training
+  </h1>
+  
+  <!-- Slideshow Container -->
+  <div class="slideshow-container relative max-w-full">
+    <div class="slides">
+      <Picture
+        src={pic1}
+        alt="NCDMB training facility"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="eager"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic2}
+        alt="Training session"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic3}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+    </div>
+    
+    <!-- Navigation dots -->
+    <div class="dots-container flex justify-center mt-4 gap-2">
+      <button class="dot active" data-slide="0"></button>
+      <button class="dot" data-slide="1"></button>
+      <button class="dot" data-slide="2"></button>
+    </div>
+  </div>
+
+  <p class="text-lg mt-4 text-black max-w-fit lg:text-xl">
+    Join our comprehensive NCDMB 2025 training program designed for 
+    oil and gas professionals.
+  </p>
+  
+  <div class="mt-2 flex flex-col gap-3">
+    
+      href="/trainings/ncdmb-2025"
+      class="flex gap-1 max-w-fit items-center justify-start bg-white text-[#2947A9] font-bold"
+      rel="noopener">
+      Learn more
+    </a>
+  </div>
+</div>
+
+<style>
+  .slideshow-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide-image {
+    min-width: 100%;
+    height: auto;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #bbb;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .dot.active,
+  .dot:hover {
+    background-color: #2947A9;
+  }
+</style>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelector('.slides');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = dots.length;
+
+  function showSlide(n) {
+    currentSlide = n;
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentSlide);
+    });
+  }
+
+  // Auto-advance slides
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }, 4000);
+
+  // Manual navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+</script>
