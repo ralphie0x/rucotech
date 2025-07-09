@@ -178,6 +178,8 @@ import { Picture } from "astro:assets";
     overflow: hidden;
     max-width: 100%;
     margin: 0 auto;
+    touch-action: pan-y; /* Allow vertical scrolling but capture horizontal swipes */
+    user-select: none; /* Prevent text selection during swipe */
   }
   
   .slides {
@@ -228,8 +230,14 @@ import { Picture } from "astro:assets";
 <!-- JavaScript for slideshow functionality -->
 <script>
   let currentSlide = 0; // Tracks the currently displayed slide index
+  let touchStartX = 0; // Touch start position for mobile swipe
+  let touchEndX = 0; // Touch end position for mobile swipe
+  let isAutoPlaying = true; // Track if auto-play is active
+  let autoPlayInterval: ReturnType<typeof setInterval>; // Store the interval ID
+  
   // Get the slides container with proper type assertion
   const slides = document.querySelector('.slides') as HTMLElement; 
+  const slidesContainer = document.querySelector('.slideshow-container') as HTMLElement;
   const dots = document.querySelectorAll('.dot') as NodeListOf<HTMLElement>; // All navigation dot buttons
   const totalSlides = dots.length; // Total number of slides
 
@@ -247,15 +255,88 @@ import { Picture } from "astro:assets";
     });
   }
 
-  // Auto-advance slides every 4 seconds
-  setInterval(() => {
-    currentSlide = (currentSlide + 1) % totalSlides; // Cycle through slides
-    showSlide(currentSlide);
-  }, 4000);
+  // Auto-advance slides function
+  function startAutoPlay(): void {
+    if (isAutoPlaying) {
+      autoPlayInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides; // Cycle through slides
+        showSlide(currentSlide);
+      }, 4000);
+    }
+  }
+
+  // Stop auto-play function
+  function stopAutoPlay(): void {
+    clearInterval(autoPlayInterval);
+  }
+
+  // Handle touch start for mobile swipe
+  function handleTouchStart(e: TouchEvent): void {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoPlay(); // Stop auto-play when user interacts
+  }
+
+  // Handle touch move to prevent default scrolling during swipe
+  function handleTouchMove(e: TouchEvent): void {
+    e.preventDefault(); // Prevent page scrolling during slide swipe
+  }
+
+  // Handle touch end for mobile swipe
+  function handleTouchEnd(e: TouchEvent): void {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+    // Restart auto-play after 3 seconds of inactivity
+    setTimeout(() => {
+      startAutoPlay();
+    }, 3000);
+  }
+
+  // Determine swipe direction and change slide
+  function handleSwipe(): void {
+    const swipeThreshold = 50; // Minimum swipe distance
+    const swipeDistance = touchStartX - touchEndX;
+    
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swiped left - go to next slide
+        currentSlide = (currentSlide + 1) % totalSlides;
+      } else {
+        // Swiped right - go to previous slide
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      }
+      showSlide(currentSlide);
+    }
+  }
+
+  // Add touch event listeners for mobile swipe functionality
+  if (slidesContainer) {
+    slidesContainer.addEventListener('touchstart', handleTouchStart, { passive: false });
+    slidesContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+    slidesContainer.addEventListener('touchend', handleTouchEnd, { passive: false });
+  }
+
+  // Start auto-play on page load
+  startAutoPlay();
 
   // Add click event listeners to navigation dots for manual control
   dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => showSlide(index));
+    dot.addEventListener('click', () => {
+      stopAutoPlay(); // Stop auto-play when user clicks dot
+      showSlide(index);
+      // Restart auto-play after 3 seconds
+      setTimeout(() => {
+        startAutoPlay();
+      }, 3000);
+    });
+  });
+
+  // Pause auto-play when page is not visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoPlay();
+    } else {
+      startAutoPlay();
+    }
   });
 </script>
 <!-- End of the NCDMB 2025 training component -->
