@@ -1,0 +1,39 @@
+---
+import Icon from "astro-icon";
+---
+
+<footer
+  class="mt-20 grid items-center justify-center justify-items-center p-8 bg-[#2947A9] text-white">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 w-full">
+    <p class="flex gap-2">
+      <Icon class="lg:h-8 h-6" name="mdi:location" />
+      1-2 Vio water close (yellow gate),off NPA by-pass NPA express warri
+    </p>
+    <p class="flex gap-2">
+      <Icon class="h-6" name="mdi:location" />
+      Lekki Gardens Phase 2, Lekki, Lagos
+    </p>
+    <p class="flex gap-2">
+      <Icon class="h-6" name="mdi:phone" />
+      +234 80 3712 3122
+    </p>
+    <p class="flex gap-2">
+      <Icon class="h-6" name="mdi:mail" />
+      hello@ruco.tech
+    </p>
+  </div>
+  <div class="mt-20 lg:text-center w-full">
+    <p class="text-sm text-slate-400">
+      Copyright © {new Date().getFullYear()} Rucotech. All rights reserved.
+    </p>
+    <p class="text-xs text-slate-400 mt-1">
+      Made by <a
+        href="https://afullsnack.dev"
+        target="_blank"
+        rel="noopener"
+        class="hover:underline">
+        afullsnack
+      </a>
+    </p>
+  </div>
+</footer>

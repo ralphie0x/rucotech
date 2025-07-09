@@ -1,0 +1,219 @@
+---
+// Import necessary image assets for the slideshow
+import pic1 from "@assets/ncdmb-1.jpg";
+import pic2 from "@assets/ncdmb-2.jpg";
+import pic3 from "@assets/ncdmb-3.jpg";
+import pic4 from "@assets/ncdmb-4.jpg";
+import pic5 from "@assets/ncdmb-5.jpg";
+import pic6 from "@assets/ncdmb-6.jpg";
+import pic7 from "@assets/ncdmb-7.jpg";
+import pic8 from "@assets/ncdmb-8.jpg";
+import pic9 from "@assets/ncdmb-9.jpg";
+import pic10 from "@assets/ncdmb-10.jpg";
+// Import the Picture component from astro:assets for optimized image handling
+import { Picture } from "astro:assets";
+---
+
+<!-- Main container for the training details and slideshow -->
+<div class="grid gap-4">
+  <!-- Page Title -->
+  <h1 class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter text-black">
+    NCDMB ISO 9001-2015 Quality Management System Training
+  </h1>
+  
+  <!-- Slideshow Container -->
+  <div class="slideshow-container relative max-w-full">
+    <!-- Slides Wrapper: Contains all the individual picture slides -->
+    <div class="slides">
+      <!-- Each Picture component represents a single slide in the slideshow -->
+      <Picture
+        src={pic1}
+        alt="NCDMB training facility"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="eager"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic2}
+        alt="Training session"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic3}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic4}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+        />
+      <Picture
+        src={pic5}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic6}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic7}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic8}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic9}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+      <Picture
+        src={pic10}
+        alt="Participants"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="lazy"
+        format="avif"
+        class="slide-image"
+      />
+    </div>
+    
+    <!-- Navigation dots for manual slide control -->
+    <div class="dots-container flex justify-center mt-4 gap-2">
+      <button class="dot active" data-slide="0"></button>
+      <button class="dot" data-slide="1"></button>
+      <button class="dot" data-slide="2"></button>
+      <button class="dot" data-slide="3"></button>
+      <button class="dot" data-slide="4"></button>
+      <button class="dot" data-slide="5"></button>
+      <button class="dot" data-slide="6"></button>
+      <button class="dot" data-slide="7"></button>
+      <button class="dot" data-slide="8"></button>
+      <button class="dot" data-slide="9"></button>
+    </div>
+  </div>
+
+  <!-- Training description paragraph -->
+  <p class="text-lg mt-4 text-black max-w-fit lg:text-xl">
+    A three day (3 day) NCDMB ISO 9001-2015 Quality Management System (QMS) 
+    training for 30 nominated youths in Warri (July 7, 2025 - July 9, 2025)
+    coducted by Rucotech Integrated Services Nigeria Limited.
+  </p>
+  
+  <!-- "Learn more" link (note: the href attribute was incomplete in the original, adjusted for clarity) -->
+  <div class="mt-2 flex flex-col gap-3">
+    <a
+      href="/trainings/ncdmb-2025"
+      class="flex gap-1 max-w-fit items-center justify-start bg-white text-[#2947A9] font-bold"
+      rel="noopener">
+      Learn more
+    </a>
+  </div>
+</div>
+
+<!-- CSS Styling for the slideshow components -->
+<style>
+  .slideshow-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for slide changes */
+  }
+  
+  .slide-image {
+    min-width: 100%; /* Ensures each image takes full width of the container */
+    height: auto;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Makes the dots circular */
+    background-color: #bbb; /* Default dot color */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for dot color change */
+  }
+  
+  .dot.active,
+  .dot:hover {
+    background-color: #2947A9; /* Active/hover dot color */
+  }
+</style>
+
+<!-- JavaScript for slideshow functionality -->
+<script>
+  let currentSlide = 0; // Tracks the currently displayed slide index
+  // Get the slides container.
+  const slides = document.querySelector('.slides'); 
+  const dots = document.querySelectorAll('.dot'); // All navigation dot buttons
+  const totalSlides = dots.length; // Total number of slides
+
+  // Function to display a specific slide
+  function showSlide(n) { 
+    currentSlide = n;
+    // Ensure slides is an HTMLElement before accessing its style property
+    if (slides instanceof HTMLElement) { 
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+    
+    // Update active class for navigation dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentSlide);
+    });
+  }
+
+  // Auto-advance slides every 4 seconds
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides; // Cycle through slides
+    showSlide(currentSlide);
+  }, 4000);
+
+  // Add click event listeners to navigation dots for manual control
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+</script>

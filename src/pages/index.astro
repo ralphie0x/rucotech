@@ -1,0 +1,26 @@
+---
+import Container from "@components/container.astro";
+import Cta from "@components/cta.astro";
+import Engineering from "@components/engineering.astro";
+import Ncdmb2025 from "@components/ncdmb-2025.astro";
+// import Features from "@components/features.astro";
+import About from "@components/about.astro";
+import Hero from "@components/hero.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="">
+  <Hero />
+  <Container>
+    <Engineering />
+    <!-- <Features /> -->
+  </Container>
+  <Container>
+    <Ncdmb2025 />
+    <!-- <Features /> -->
+  </Container>
+  <Cta />
+  <Container>
+    <About />
+  </Container>
+</Layout>

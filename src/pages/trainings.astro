@@ -1,0 +1,55 @@
+---
+import Container from "@components/container.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Trainings">
+  <div
+    class="bg-[url('/eng-hero.png')] grid bg-cover bg-center bg-no-repeat bg-origin-border px-6 md:px-12 md:py-14 py-24 md:place-content-center md:place-items-start md:min-h-[300px]">
+  </div>
+  <Container>
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">
+        Free Engineering Training
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        In partnership with Rucotech, Olu of Warri Palace Liaison Authority
+        (owpla.org) is organizing a two-weeks free upskill training for
+        Engineering and Natural Science graduates. See the details below, if you
+        meet the criteria, click the “Register now” button to apply.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Graduates with a minimum qualification of Higher National Diploma (HND)
+        and currently yet to be employed in the fields of;<br />
+        <ol class="list-decimal pl-6">
+          <li>Mechanical Engineering</li>
+          <li>Petroleum Engineering</li>
+          <li>Chemical Engineering</li>
+          <li>Civil Engineering</li>
+          <li>Production Engineering</li>
+          <li>Geology</li>
+          <li>Chemistry/Industrial Chemistry</li>
+          <li>Physics, etc</li>
+        </ol>
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        After form submission a selection process will be done to ensure only
+        qualified and serious minded candidates are provided with this
+        opportunity. If you are selected, you will receive a mail with a unique
+        QR code, this will grant you access to the training venue.<br />
+        There is limited spots for this training, we will not accept more applications
+        once the spots have been filled.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Training will be held between 10th - 22nd of July, 2024. Registration
+        closed midnight, November 30, 2023.
+      </p>
+      <a
+        href="https://forms.gle/zbCuMe1CFVNSMMGU7"
+        class="flex gap-1 max-w-fit items-center justify-start bg-white text-[#2947A9] font-bold"
+        rel="noopener">
+        Register now
+      </a>
+    </div>
+  </Container>
+</Layout>
