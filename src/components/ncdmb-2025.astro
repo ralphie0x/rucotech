@@ -25,97 +25,117 @@ import { Picture } from "astro:assets";
   <div class="slideshow-container relative max-w-full">
     <!-- Slides Wrapper: Contains all the individual picture slides -->
     <div class="slides">
-      <!-- Each Picture component represents a single slide in the slideshow -->
-      <Picture
-        src={pic1}
-        alt="NCDMB training facility"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="eager"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic2}
-        alt="Training session"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic3}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic4}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
+      <!-- Each div represents a single slide in the slideshow -->
+      <div class="slide">
+        <Picture
+          src={pic1}
+          alt="Training session"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="eager"
+          format="avif"
+          class="slide-image"
         />
-      <Picture
-        src={pic5}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic6}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic7}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic8}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic9}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
-      <Picture
-        src={pic10}
-        alt="Participants"
-        widths={[200, 400, 600]}
-        sizes="(max-width: 800px) 100vw, 620px"
-        loading="lazy"
-        format="avif"
-        class="slide-image"
-      />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic2}
+          alt="Training session"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic3}
+          alt="Participants"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic4}
+          alt="Participants"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic5}
+          alt="Participants"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic6}
+          alt="Participants"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic7}
+          alt="Participants"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic8}
+          alt="Training session"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic9}
+          alt="Training session"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
+      <div class="slide">
+        <Picture
+          src={pic10}
+          alt="Training session"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="lazy"
+          format="avif"
+          class="slide-image"
+        />
+      </div>
     </div>
     
     <!-- Navigation dots for manual slide control -->
@@ -163,8 +183,13 @@ import { Picture } from "astro:assets";
     transition: transform 0.5s ease-in-out; /* Smooth transition for slide changes */
   }
   
+  .slide {
+    min-width: 100%; /* Each slide takes full width of the container */
+    flex-shrink: 0; /* Prevents slides from shrinking */
+  }
+  
   .slide-image {
-    min-width: 100%; /* Ensures each image takes full width of the container */
+    width: 100%; /* Image takes full width of its slide */
     height: auto;
   }
   
