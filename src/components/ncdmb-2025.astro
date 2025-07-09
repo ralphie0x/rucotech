@@ -29,7 +29,7 @@ import { Picture } from "astro:assets";
       <div class="slide">
         <Picture
           src={pic1}
-          alt="Training session"
+          alt="NCDMB training facility"
           widths={[200, 400, 600]}
           sizes="(max-width: 800px) 100vw, 620px"
           loading="eager"
@@ -106,7 +106,7 @@ import { Picture } from "astro:assets";
       <div class="slide">
         <Picture
           src={pic8}
-          alt="Training session"
+          alt="Participants"
           widths={[200, 400, 600]}
           sizes="(max-width: 800px) 100vw, 620px"
           loading="lazy"
@@ -117,7 +117,7 @@ import { Picture } from "astro:assets";
       <div class="slide">
         <Picture
           src={pic9}
-          alt="Training session"
+          alt="Participants"
           widths={[200, 400, 600]}
           sizes="(max-width: 800px) 100vw, 620px"
           loading="lazy"
@@ -128,7 +128,7 @@ import { Picture } from "astro:assets";
       <div class="slide">
         <Picture
           src={pic10}
-          alt="Training session"
+          alt="Participants"
           widths={[200, 400, 600]}
           sizes="(max-width: 800px) 100vw, 620px"
           loading="lazy"
@@ -176,6 +176,8 @@ import { Picture } from "astro:assets";
   .slideshow-container {
     position: relative;
     overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   .slides {
@@ -186,11 +188,25 @@ import { Picture } from "astro:assets";
   .slide {
     min-width: 100%; /* Each slide takes full width of the container */
     flex-shrink: 0; /* Prevents slides from shrinking */
+    aspect-ratio: 16/9; /* Maintains consistent 16:9 aspect ratio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa; /* Light background for empty space */
   }
   
   .slide-image {
     width: 100%; /* Image takes full width of its slide */
-    height: auto;
+    height: 100%; /* Image takes full height of its slide */
+    object-fit: cover; /* Crops image to fit while maintaining aspect ratio */
+    object-position: center; /* Centers the image within the container */
+  }
+  
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .slide {
+      aspect-ratio: 4/3; /* Better aspect ratio for mobile */
+    }
   }
   
   .dot {
