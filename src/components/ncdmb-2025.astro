@@ -195,13 +195,17 @@ import { Picture } from "astro:assets";
     align-items: center;
     justify-content: center;
     background-color: #f8f9fa; /* Light background for empty space */
+    overflow: hidden; /* Ensure content doesn't overflow */
   }
   
   .slide-image {
-    width: 100%; /* Image takes full width of its slide */
-    height: 100%; /* Image takes full height of its slide */
+    width: 100% !important; /* Force full width */
+    height: 100% !important; /* Force full height */
     object-fit: cover; /* Crops image to fit while maintaining aspect ratio */
     object-position: center; /* Centers the image within the container */
+    display: block; /* Remove any inline spacing */
+    max-width: none; /* Remove any max-width constraints */
+    max-height: none; /* Remove any max-height constraints */
   }
   
   /* Mobile responsive adjustments */
