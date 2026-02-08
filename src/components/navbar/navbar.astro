@@ -18,14 +18,14 @@ const menuitems: Record<string, any>[] = [
     title: "Services",
     path: "/services",
   },
-  // {
-  //   title: "Media",
-  //   path: "/media",
-  // },
   {
     title: "Trainings",
     badge: true,
     path: "/trainings",
+  },
+  {
+    title: "Careers",
+    path: "https://careers.ruco.tech",
   },
 ];
 ---
@@ -36,14 +36,12 @@ const menuitems: Record<string, any>[] = [
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg">
           <img src={logoIcon.src} height={"40px"} width="40px" />
-          <!-- <span class="font-bold text-slate-800">Astro</span><span
-            class="text-slate-500">ship</span
-          > -->
         </a>
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />
         </div>
       </div>
+
       <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
         <ul class="flex flex-col lg:flex-row lg:gap-3">
           {
@@ -61,8 +59,11 @@ const menuitems: Record<string, any>[] = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
-                      <span> {item.title}</span>
+                      target={item.path.startsWith("http") ? "_blank" : undefined}
+                      rel={item.path.startsWith("http") ? "noopener noreferrer" : undefined}
+                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
+                    >
+                      <span>{item.title}</span>
                       {item.badge && (
                         <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
                           New
@@ -75,21 +76,23 @@ const menuitems: Record<string, any>[] = [
             ))
           }
         </ul>
+
         <div class="lg:hidden flex items-center mt-3 gap-4">
           <Link href="/contact" style="muted" block size="md">Contact Us</Link>
-          <!-- <Link href="#" size="md" block>Sign up</Link> -->
         </div>
       </MenuItems>
     </Astronav>
+
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <!-- <a href="#">Log in</a> -->
         <a
           href="/contact"
-          class="bg-transparent font-bold text-blue-600 tracking-wide">
+          class="bg-transparent font-bold text-blue-600 tracking-wide"
+        >
           Contact Us
         </a>
       </div>
     </div>
   </header>
 </Container>
+
