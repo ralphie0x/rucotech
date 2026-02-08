@@ -4,7 +4,6 @@ import pic2 from "@assets/ncdmb-2.jpg";
 import pic3 from "@assets/ncdmb-3.jpg";
 import { Picture } from "astro:assets";
 ---
-
 <div class="grid gap-4">
   <h1 class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter text-black">
     NCDMB 2025 Training
@@ -49,7 +48,6 @@ import { Picture } from "astro:assets";
       <button class="dot" data-slide="2"></button>
     </div>
   </div>
-
   <p class="text-lg mt-4 text-black max-w-fit lg:text-xl">
     Join our comprehensive NCDMB 2025 training program designed for 
     oil and gas professionals.
@@ -64,7 +62,6 @@ import { Picture } from "astro:assets";
     </a>
   </div>
 </div>
-
 <style>
   .slideshow-container {
     position: relative;
@@ -96,38 +93,38 @@ import { Picture } from "astro:assets";
     background-color: #2947A9;
   }
 </style>
-
-<script lang="ts">
+<script>
   let currentSlide = 0;
-
+  
   function initSlider() {
     const slides = document.querySelector('.slides') as HTMLElement | null;
     const dots = document.querySelectorAll('.dot') as NodeListOf<HTMLElement>;
     const totalSlides = dots.length;
-
+    
     if (!slides || totalSlides === 0) return;
-
+    
     function showSlide(n: number) {
       currentSlide = n;
-      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-
+      if (slides) {
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSlide);
       });
     }
-
+    
     // Auto-advance slides
     setInterval(() => {
       currentSlide = (currentSlide + 1) % totalSlides;
       showSlide(currentSlide);
     }, 4000);
-
+    
     // Manual navigation
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => showSlide(index));
     });
   }
-
+  
   // Ensure DOM is ready (Astro-safe)
   if (typeof window !== "undefined") {
     window.addEventListener("DOMContentLoaded", initSlider);
