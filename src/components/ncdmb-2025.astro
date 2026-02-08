@@ -100,31 +100,36 @@ import { Picture } from "astro:assets";
 <script lang="ts">
   let currentSlide = 0;
 
-  const slides = document.querySelector('.slides') as HTMLElement | null;
-  const dots = document.querySelectorAll('.dot') as NodeListOf<HTMLElement>;
-  const totalSlides = dots.length;
+  function initSlider() {
+    const slides = document.querySelector('.slides') as HTMLElement | null;
+    const dots = document.querySelectorAll('.dot') as NodeListOf<HTMLElement>;
+    const totalSlides = dots.length;
 
-  function showSlide(n: number) {
-    if (!slides) return; // prevent null error
+    if (!slides || totalSlides === 0) return;
 
-    currentSlide = n;
-    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    function showSlide(n: number) {
+      currentSlide = n;
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
 
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    // Auto-advance slides
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }, 4000);
+
+    // Manual navigation
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentSlide);
+      dot.addEventListener('click', () => showSlide(index));
     });
   }
 
-  // Auto-advance slides
-  setInterval(() => {
-    if (totalSlides === 0) return;
-
-    currentSlide = (currentSlide + 1) % totalSlides;
-    showSlide(currentSlide);
-  }, 4000);
-
-  // Manual navigation
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => showSlide(index));
-  });
+  // Ensure DOM is ready (Astro-safe)
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", initSlider);
+  }
 </script>
